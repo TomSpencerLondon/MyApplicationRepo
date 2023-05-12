@@ -28,7 +28,7 @@ pipeline {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: 'ec2-3-8-100-5.eu-west-2.compute.amazonaws.com:8081',
+      nexusUrl: '13.42.158.154:8081',
       groupId: 'myGroupId',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
@@ -45,7 +45,7 @@ pipeline {
     stage ('DEV Deploy') {
           steps {
           echo "deploying to DEV Env "
-          deploy adapters: [tomcat9(credentialsId: '579fbd2e-fd7b-467b-9290-613b00c83c5a', path: '', url: 'http://ec2-3-9-29-100.eu-west-2.compute.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
+          deploy adapters: [tomcat9(credentialsId: '579fbd2e-fd7b-467b-9290-613b00c83c5a', path: '', url: 'http://3.10.239.96:8080')], contextPath: null, war: '**/*.war'
           }
         }
         stage ('Slack Notification') {
@@ -65,7 +65,7 @@ pipeline {
          stage ('QA Deploy') {
           steps {
             echo "deploying to QA Env "
-            deploy adapters: [tomcat9(credentialsId: '579fbd2e-fd7b-467b-9290-613b00c83c5a', path: '', url: 'http://ec2-3-9-29-100.eu-west-2.compute.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
+            deploy adapters: [tomcat9(credentialsId: '579fbd2e-fd7b-467b-9290-613b00c83c5a', path: '', url: 'http://3.10.239.96:8080')], contextPath: null, war: '**/*.war'
             }
         }
         stage ('QA Approve') {

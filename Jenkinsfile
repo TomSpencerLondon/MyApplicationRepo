@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
-      sh 'mvn clean install -f MyWebApp/pom.xml'
+      sh 'mvn clean install -f pom.xml'
       }
     }
     stage ('Code Quality') {
